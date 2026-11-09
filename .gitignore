@@ -1,0 +1,12 @@
+# временные файлы и служебное
+_shot*.png
+_chrome/
+_chrome2/
+_c3/
+tools/__pycache__/
+*.pyc
+
+# ОС
+Thumbs.db
+desktop.ini
+.DS_Store

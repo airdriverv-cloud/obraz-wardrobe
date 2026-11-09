@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500" role="img" aria-label="Фигура в базовой серой одежде до примерки">
+  <defs>
+    <linearGradient id="bgA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F0EAE1"/>
+      <stop offset="1" stop-color="#DED4C6"/>
+    </linearGradient>
+    <linearGradient id="denim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#81909E"/>
+      <stop offset="1" stop-color="#6C7B8A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="500" fill="url(#bgA)"/>
+  <circle cx="200" cy="150" r="150" fill="#FFFFFF" opacity=".18"/>
+  <ellipse cx="200" cy="472" rx="86" ry="13" fill="#16130F" opacity=".08"/>
+
+  <!-- шея и голова -->
+  <rect x="188" y="132" width="24" height="34" rx="10" fill="#DCC0A8"/>
+  <circle cx="200" cy="108" r="40" fill="#E3C8B0"/>
+  <path d="M160 100c0-26 18-44 40-44s40 18 40 44c0 4-2 8-4 10-2-16-6-24-14-26-10 8-32 10-46 4-6 4-8 10-8 22-4-2-8-6-8-10z" fill="#3A2C22"/>
+  <path d="M168 146c8 8 56 8 64 0" stroke="#C9A98C" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- ноги -->
+  <rect x="172" y="290" width="26" height="152" rx="9" fill="url(#denim)"/>
+  <rect x="202" y="290" width="26" height="152" rx="9" fill="url(#denim)"/>
+  <rect x="168" y="288" width="34" height="44" rx="8" fill="#7C8A99"/>
+  <rect x="198" y="288" width="34" height="44" rx="8" fill="#7C8A99"/>
+
+  <!-- ступни -->
+  <path d="M168 432h34v22a6 6 0 0 1-6 6h-34a6 6 0 0 1-2-11l8-6z" fill="#EAE5DC"/>
+  <path d="M198 432h34v22a6 6 0 0 1-6 6h-34a6 6 0 0 1-2-11l8-6z" fill="#E2DCD2"/>
+
+  <!-- руки -->
+  <path d="M154 172l-16 96 16 4 16-96z" fill="#E3C8B0"/>
+  <path d="M246 172l16 96-16 4-16-96z" fill="#E3C8B0"/>
+  <circle cx="150" cy="278" r="11" fill="#E3C8B0"/>
+  <circle cx="250" cy="278" r="11" fill="#E3C8B0"/>
+
+  <!-- футболка -->
+  <path d="M158 172c14-8 70-8 84 0l6 46-18 6v76c-16 6-44 6-60 0v-76l-18-6z" fill="#B9B5AE"/>
+  <path d="M158 172c10-6 22-8 42-8s32 2 42 8l-4 14c-10-6-22-8-38-8s-28 2-38 8z" fill="#A8A49D"/>
+
+  <!-- тени -->
+  <path d="M186 296h28v14h-28z" fill="#000" opacity=".05"/>
+</svg>

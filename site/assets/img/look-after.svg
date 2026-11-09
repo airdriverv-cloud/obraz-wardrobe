@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500" role="img" aria-label="Фигура в собранном образе после примерки: бежевое пальто, кремовый шарф, бордовая сумка">
+  <defs>
+    <linearGradient id="bgB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EFE4D2"/>
+      <stop offset="1" stop-color="#D9C4A7"/>
+    </linearGradient>
+    <linearGradient id="coat" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#D3B48B"/>
+      <stop offset="1" stop-color="#BE9B6E"/>
+    </linearGradient>
+    <linearGradient id="pants" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#43413C"/>
+      <stop offset="1" stop-color="#2F2D29"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="500" fill="url(#bgB)"/>
+  <circle cx="200" cy="150" r="150" fill="#FFFFFF" opacity=".22"/>
+  <ellipse cx="200" cy="472" rx="92" ry="13" fill="#16130F" opacity=".1"/>
+
+  <!-- шея и голова -->
+  <rect x="188" y="132" width="24" height="34" rx="10" fill="#DCC0A8"/>
+  <circle cx="200" cy="108" r="40" fill="#E3C8B0"/>
+  <path d="M160 100c0-26 18-44 40-44s40 18 40 44c0 4-2 8-4 10-2-16-6-24-14-26-10 8-32 10-46 4-6 4-8 10-8 22-4-2-8-6-8-10z" fill="#3A2C22"/>
+  <path d="M168 146c8 8 56 8 64 0" stroke="#C9A98C" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- шарф -->
+  <path d="M166 158c10 10 58 10 68 0l8 26c-10 12-74 12-84 0z" fill="#F7F3EC"/>
+  <path d="M196 182h14l4 62-12 4-10-4z" fill="#EDE6DA"/>
+
+  <!-- брюки -->
+  <rect x="172" y="298" width="26" height="144" rx="8" fill="url(#pants)"/>
+  <rect x="202" y="298" width="26" height="144" rx="8" fill="url(#pants)"/>
+
+  <!-- ботинки -->
+  <path d="M170 420h30v34a6 6 0 0 1-6 6h-30a6 6 0 0 1-2-11l8-10z" fill="#2B2622"/>
+  <path d="M200 420h30v34a6 6 0 0 1-6 6h-30a6 6 0 0 1-2-11l8-10z" fill="#221E1A"/>
+  <rect x="168" y="418" width="34" height="8" rx="4" fill="#3B3530"/>
+  <rect x="198" y="418" width="34" height="8" rx="4" fill="#3B3530"/>
+
+  <!-- пальто: рукава -->
+  <path d="M152 172l-14 112 26 6 12-108z" fill="url(#coat)"/>
+  <path d="M248 172l14 112-26 6-12-108z" fill="url(#coat)"/>
+
+  <!-- пальто: корпус -->
+  <path d="M156 168c16-10 72-10 88 0l8 62-6 84c-18 8-74 8-92 0l-6-84z" fill="url(#coat)"/>
+  <!-- лацканы -->
+  <path d="M200 176l-30-8-6 40 26 22z" fill="#DFC29A"/>
+  <path d="M200 176l30-8 6 40-26 22z" fill="#DFC29A"/>
+  <path d="M200 176v130" stroke="#A9885E" stroke-width="2"/>
+  <!-- пояс -->
+  <rect x="160" y="286" width="80" height="12" rx="4" fill="#B08E62"/>
+  <!-- пуговицы -->
+  <circle cx="214" cy="232" r="4" fill="#8E6F49"/>
+  <circle cx="214" cy="262" r="4" fill="#8E6F49"/>
+
+  <!-- сумка -->
+  <path d="M126 206c0 0-6 92-2 120h44c4-28-2-120-2-120" fill="none" stroke="#6E2334" stroke-width="6" stroke-linecap="round"/>
+  <rect x="120" y="318" width="52" height="46" rx="7" fill="#6E2334"/>
+  <rect x="138" y="330" width="16" height="8" rx="3" fill="#8E3A4C"/>
+
+  <!-- кисти рук -->
+  <circle cx="140" cy="292" r="11" fill="#E3C8B0"/>
+  <circle cx="260" cy="292" r="11" fill="#E3C8B0"/>
+</svg>
