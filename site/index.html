@@ -3,254 +3,308 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ОБРАЗ — цифровой гардероб и AI-стилист</title>
-<meta name="description" content="Цифровой гардероб, который помнит каждую вещь. AI-стилист собирает образ под погоду и повод из того, что уже есть в шкафу.">
-<meta name="theme-color" content="#14110F">
+<title>ОБРАЗ — ИИ-стилист: комплект из 100 500 вещей</title>
+<meta name="description" content="ИИ собирает комплект под погоду и повод из каталога 100 500 вещей. Примерить можно на четырёх моделях или на своём фото.">
+<meta name="theme-color" content="#F7F3EC">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body data-mode="images">
 
-<!-- ── SVG‑спрайт иконок одежды ───────────────────────────────── -->
 <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
   <symbol id="i-tee" viewBox="0 0 24 24"><path d="M8.5 4 4.2 6.1 2.8 10.2l3 1.4.7-2.2V21h13V9.4l.7 2.2 3-1.4-1.4-4.1L16.5 4c-.7 1.7-7.3 1.7-8 0Z"/></symbol>
   <symbol id="i-shirt" viewBox="0 0 24 24"><path d="M8.5 4 4.2 6.1 2.8 10.2l3 1.4.7-2.2V21h13V9.4l.7 2.2 3-1.4-1.4-4.1L16.5 4"/><path d="M9 4l3 3 3-3M12 8v13"/></symbol>
-  <symbol id="i-sweater" viewBox="0 0 24 24"><path d="M8.5 3.5 4 5.8 2.6 11.4l3.2 1.1.6-2.4V21h11.2V10.1l.6 2.4 3.2-1.1L20 5.8l-4.5-2.3c-.8 1.6-6.2 1.6-7 0Z"/><path d="M9.4 3.7c.4 1.6 4.8 1.6 5.2 0"/></symbol>
-  <symbol id="i-jacket" viewBox="0 0 24 24"><path d="M8.6 4 4 6.2V21h16V6.2L15.4 4 12 7.5 8.6 4Z"/><path d="M12 7.5V21M9 11h1.4M13.6 11H15"/></symbol>
-  <symbol id="i-coat" viewBox="0 0 24 24"><path d="M8.6 3.6 4 6.3V21h16V6.3l-4.6-2.7L12 8 8.6 3.6Z"/><path d="M12 8v13M9.4 3.8 12 8l2.6-4.2"/></symbol>
+  <symbol id="i-sweater" viewBox="0 0 24 24"><path d="M8.5 3.5 4 5.8 2.6 11.4l3.2 1.1.6-2.4V21h11.2V10.1l.6 2.4 3.2-1.1L20 5.8l-4.5-2.3c-.8 1.6-6.2 1.6-7 0Z"/></symbol>
+  <symbol id="i-jacket" viewBox="0 0 24 24"><path d="M8.6 4 4 6.2V21h16V6.2L15.4 4 12 7.5 8.6 4Z"/><path d="M12 7.5V21"/></symbol>
+  <symbol id="i-coat" viewBox="0 0 24 24"><path d="M8.6 3.6 4 6.3V21h16V6.3l-4.6-2.7L12 8 8.6 3.6Z"/><path d="M12 8v13"/></symbol>
   <symbol id="i-trousers" viewBox="0 0 24 24"><path d="M7 3h10l1.2 18h-4.4L12 10.4 10.2 21H5.8L7 3Z"/><path d="M7 7h10"/></symbol>
-  <symbol id="i-jeans" viewBox="0 0 24 24"><path d="M7 3h10l1.2 18h-4.4L12 11l-1.8 10H5.8L7 3Z"/><path d="M7.2 6h9.6M9.6 3.4v2.2M14.4 3.4v2.2"/></symbol>
-  <symbol id="i-skirt" viewBox="0 0 24 24"><path d="M8.4 4h7.2l4.4 17H4L8.4 4Z"/><path d="M8.4 8.4h7.2M12 8.6V21"/></symbol>
-  <symbol id="i-dress" viewBox="0 0 24 24"><path d="M9.2 4h5.6l2 6.4L20 21H4l3.2-10.6L9.2 4Z"/><path d="M9.2 4c.6 1.6 4.6 1.6 5.2 0"/></symbol>
+  <symbol id="i-jeans" viewBox="0 0 24 24"><path d="M7 3h10l1.2 18h-4.4L12 11l-1.8 10H5.8L7 3Z"/><path d="M7.2 6h9.6"/></symbol>
+  <symbol id="i-skirt" viewBox="0 0 24 24"><path d="M8.4 4h7.2l4.4 17H4L8.4 4Z"/><path d="M12 8.6V21"/></symbol>
+  <symbol id="i-dress" viewBox="0 0 24 24"><path d="M9.2 4h5.6l2 6.4L20 21H4l3.2-10.6L9.2 4Z"/></symbol>
   <symbol id="i-sneakers" viewBox="0 0 24 24"><path d="M2.6 16.4c0-1.4 1.2-2 2.4-2.4l3.4-1 3-3.4 2.6 1.6 5.4 2.4c1.6.7 2 1.8 2 2.8v1.2H2.6v-1.2Z"/><path d="M2.6 18.4h18.8"/></symbol>
-  <symbol id="i-boots" viewBox="0 0 24 24"><path d="M7.6 3h4.8v10.4l5.2 2.2c1 .4 1.4 1.1 1.4 2V21H7.6V3Z"/><path d="M7.6 18.2h11.4"/></symbol>
-  <symbol id="i-loafers" viewBox="0 0 24 24"><path d="M3 15.2c0-1.6 1.6-2.4 3.4-2.8l4.6-1 3.6-2.2 1.8 2c1 .8 4.6 1.6 4.6 4.2V18H3v-2.8Z"/><path d="M3 18h18M9.4 12.4c1 .8 2.6 1.2 4 1"/></symbol>
+  <symbol id="i-boots" viewBox="0 0 24 24"><path d="M7.6 3h4.8v10.4l5.2 2.2c1 .4 1.4 1.1 1.4 2V21H7.6V3Z"/></symbol>
+  <symbol id="i-loafers" viewBox="0 0 24 24"><path d="M3 15.2c0-1.6 1.6-2.4 3.4-2.8l4.6-1 3.6-2.2 1.8 2c1 .8 4.6 1.6 4.6 4.2V18H3v-2.8Z"/></symbol>
   <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 8.6h12L19.4 21H4.6L6 8.6Z"/><path d="M9 9V7a3 3 0 0 1 6 0v2"/></symbol>
   <symbol id="i-cap" viewBox="0 0 24 24"><path d="M4.6 14.6a7.4 7.4 0 0 1 14.8 0H4.6Z"/><path d="M4.6 14.6c-1.4 0-2.4.6-2.4 1.6s1 1.6 2.6 1.6h4"/></symbol>
-  <symbol id="i-scarf" viewBox="0 0 24 24"><path d="M8 3.4h8v6.2c0 3-1.4 3.6-1.4 6.4V21h-2.6v-5c0-2.8-1-3.4-1-6.4V3.4Z"/><path d="M8 7.6h8"/></symbol>
-  <symbol id="i-glasses" viewBox="0 0 24 24"><circle cx="6.6" cy="14" r="3.4"/><circle cx="17.4" cy="14" r="3.4"/><path d="M10 13.4h4M3.2 11.4 5 7.4M20.8 11.4 19 7.4"/></symbol>
+  <symbol id="i-scarf" viewBox="0 0 24 24"><path d="M8 3.4h8v6.2c0 3-1.4 3.6-1.4 6.4V21h-2.6v-5c0-2.8-1-3.4-1-6.4V3.4Z"/></symbol>
 </svg>
 
-<!-- ── Шапка ─────────────────────────────────────────────────── -->
-<header class="site-head" id="top">
+<header class="site-head">
   <div class="wrap head-inner">
-    <a class="logo" href="#top">
-      <span class="logo-mark">О</span>
-      <span class="logo-text">ОБРАЗ<em>гардероб · ИИ</em></span>
-    </a>
-    <nav class="nav" aria-label="Основная навигация">
-      <a href="#how">Как работает</a>
-      <a href="#wardrobe">Гардероб</a>
+    <a class="logo" href="#top"><span class="logo-mark">О</span><span class="logo-text">ОБРАЗ<em>гардероб · ИИ</em></span></a>
+    <nav class="nav">
+      <a href="#pipeline">Как ИИ собирает</a>
+      <a href="#today">Сегодня / Завтра</a>
+      <a href="#wardrobe">Каталог</a>
       <a href="#fitting">Примерка</a>
       <a href="#pricing">Тарифы</a>
-      <a href="#faq">Вопросы</a>
     </nav>
-    <a class="btn btn-ink btn-sm" href="#wardrobe">Открыть демо</a>
+    <a class="mode-switch" id="modeSwitch" href="icons.html" title="Другой вариант оформления">
+      <span class="mode-dot"></span> <span class="mode-label">Иконки</span>
+    </a>
+    <a class="btn btn-ink btn-sm" href="#fitting">Примерить</a>
   </div>
 </header>
 
-<main>
+<main id="top">
 
-<!-- ── Hero ──────────────────────────────────────────────────── -->
+<!-- HERO -->
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow"><span class="dot"></span> Цифровой гардероб · AI‑стилист</p>
-      <h1>Шкаф, который помнит.<br><span class="accent">Стилист, который не спит.</span></h1>
-      <p class="lead">Загрузите вещи один раз — и каждое утро получайте готовый образ под погоду, повод и то, что вы уже носили на этой неделе. Без новых покупок.</p>
+      <p class="eyebrow"><span class="dot"></span> Каталог 100 500 вещей · ИИ-стилист</p>
+      <h1>Комплект из<br><span class="accent">100 500 вещей</span> — за 10 секунд</h1>
+      <p class="lead">ИИ отбирает вещи под погоду, повод, размер и цвет, собирает 3 варианта на сегодня и завтра — и показывает их на реальных моделях или на вашем фото.</p>
       <div class="hero-actions">
-        <a class="btn btn-ink" href="#wardrobe">Собрать образ сейчас</a>
-        <a class="btn btn-ghost" href="#how">Как это работает</a>
+        <a class="btn btn-ink" href="#today">Что надеть сегодня</a>
+        <a class="btn btn-ghost" href="#pipeline">Как это работает</a>
       </div>
       <ul class="hero-notes">
-        <li>Без карты</li>
-        <li>30 вещей бесплатно</li>
-        <li>Фото остаются у вас</li>
+        <li>92 фото из каталога</li>
+        <li>4 модели для примерки</li>
+        <li>0 ₽ на старте</li>
       </ul>
     </div>
 
-    <!-- утренняя карточка -->
-    <div class="hero-card" aria-label="Пример утренней карточки образа">
+    <div class="hero-card" id="heroCard">
       <div class="hc-top">
         <div>
-          <p class="hc-day">Сегодня · четверг</p>
-          <p class="hc-date">13 ноября</p>
+          <p class="hc-day" id="hcDay">Сегодня · 13 ноября</p>
+          <p class="hc-date" id="hcTitle">Комплект дня</p>
         </div>
         <div class="hc-weather">
-          <svg viewBox="0 0 24 24" class="wc-ico" aria-hidden="true"><circle cx="9" cy="9" r="3.4"/><path d="M9 1.6v2M9 14.4v2M1.6 9h2M14.4 9h2M3.8 3.8l1.4 1.4M12.8 12.8l1.4 1.4M3.8 14.2l1.4-1.4M12.8 5.2l1.4-1.4"/><path d="M17 15.5a3.2 3.2 0 0 1 .6 6.3H8.4a3.2 3.2 0 0 1-.2-6.4"/></svg>
-          <span><b>+6°</b><small>облачно</small></span>
+          <b id="hcTemp">+6°</b>
+          <small id="hcSky">облачно</small>
         </div>
       </div>
-
-      <div class="hc-look" id="heroLook">
-        <figure class="hc-item" data-cat="outer"><svg><use href="#i-coat"/></svg><figcaption>Пальто</figcaption></figure>
-        <figure class="hc-item" data-cat="top"><svg><use href="#i-sweater"/></svg><figcaption>Свитер</figcaption></figure>
-        <figure class="hc-item" data-cat="bottom"><svg><use href="#i-jeans"/></svg><figcaption>Джинсы</figcaption></figure>
-        <figure class="hc-item" data-cat="shoes"><svg><use href="#i-boots"/></svg><figcaption>Ботинки</figcaption></figure>
-        <figure class="hc-item" data-cat="bag"><svg><use href="#i-bag"/></svg><figcaption>Сумка</figcaption></figure>
-      </div>
-
-      <p class="hc-why">Почему так: <b>+6°</b> и «офис» → тёплый верх, нейтральная база, акцент в обуви. Образ не повторялся 9 дней.</p>
+      <div class="hc-look" id="hcLook"></div>
+      <p class="hc-why" id="hcWhy">Собираю…</p>
       <div class="hc-actions">
-        <button class="btn btn-ink btn-sm" type="button" data-demo-wear>Надеть сегодня</button>
-        <button class="btn btn-ghost btn-sm" type="button" data-demo-shuffle>Другой вариант</button>
+        <button class="btn btn-ink btn-sm" type="button" id="heroWear">Надеть сегодня</button>
+        <button class="btn btn-ghost btn-sm" type="button" id="heroNext">Другой вариант</button>
       </div>
     </div>
   </div>
 
   <div class="wrap">
     <div class="stats">
-      <div><b>~30 сек</b><span>на одну вещь в гардеробе</span></div>
-      <div><b>18 вещей</b><span>уже дают 4 000+ сочетаний</span></div>
-      <div><b>0 ₽</b><span>на старте, без карты</span></div>
-      <div><b>PWA</b><span>работает без App Store</span></div>
+      <div><b>100 500</b><span>позиций в каталоге партнёров</span></div>
+      <div><b>92</b><span>реальных фото вещей в демо</span></div>
+      <div><b>3</b><span>комплекта на сегодня и завтра</span></div>
+      <div><b>4</b><span>модели: 2 девочки, 2 мальчика</span></div>
     </div>
   </div>
 </section>
 
-<!-- ── Как это работает ─────────────────────────────────────── -->
+<!-- ШАГИ -->
 <section class="section" id="how">
   <div class="wrap">
     <header class="sec-head">
-      <p class="eyebrow">Как это работает</p>
-      <h2>Три шага — и утро перестаёт быть квестом</h2>
+      <p class="eyebrow">Три шага</p>
+      <h2>От «нечего надеть» до готового комплекта</h2>
     </header>
     <div class="steps">
       <article class="step">
         <span class="step-num">01</span>
-        <h3>Сфотографируйте вещи</h3>
-        <p>Снимок на телефон или готовое фото. Фон вырезается автоматически, тип, цвет и сезон подставляются сами — вам остаётся проверить.</p>
-        <p class="step-tip">Лайфхак: начните с 15 вещей, которые носите чаще всего.</p>
+        <h3>Каталог уже загружен</h3>
+        <p>100 500 позиций партнёров: фото, размеры, бренды, сезоны. Вам не нужно фотографировать шкаф — начните с каталога, свои вещи добавьте позже.</p>
       </article>
       <article class="step">
         <span class="step-num">02</span>
-        <h3>Расскажите о себе</h3>
-        <p>Поводы, любимые цвета, что не носите и почему, размеры. Стилист учитывает это в каждом образе, а не только при регистрации.</p>
-        <p class="step-tip">Профиль правится в любой момент, образы пересчитываются.</p>
+        <h3>ИИ отсеивает лишнее</h3>
+        <p>Шесть фильтров: пол и типаж, сезон, повод, размер, цветовая совместимость, слои. Из 100 500 остаётся несколько десятков вещей.</p>
       </article>
       <article class="step">
         <span class="step-num">03</span>
-        <h3>Получайте образ утром</h3>
-        <p>Одна карточка на день: погода, повод, история носки. Нажали «надеть» — вещь ушла в статистику и не вернётся в образ неделю.</p>
-        <p class="step-tip">Дальше — планировщик недели и проверка покупок.</p>
+        <h3>Вы примеряете и надеваете</h3>
+        <p>Три варианта на сегодня и завтра. Любой можно надеть на модель, на своё фото — и отметить «надел», чтобы он не повторился неделю.</p>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ── Интерактивный гардероб ───────────────────────────────── -->
-<section class="section section-alt" id="wardrobe">
+<!-- ВОРОНКА -->
+<section class="section section-alt" id="pipeline">
   <div class="wrap">
     <header class="sec-head split">
       <div>
-        <p class="eyebrow">Демо · работает прямо в браузере</p>
-        <h2>Ваш гардероб и сборщик образов</h2>
-        <p class="sec-sub">18 демо‑вещей, фильтры, поиск и настоящий алгоритм подбора. Всё сохраняется в вашем браузере — на сервер ничего не уходит.</p>
+        <p class="eyebrow">Как из 100 500 вещей собирается комплект</p>
+        <h2>Воронка отсева — в реальных числах</h2>
+        <p class="sec-sub">Ниже — не картинка: фильтры действительно проходят по всем 100 500 позициям каталога. Поменяйте повод или температуру — числа и комплекты пересчитаются.</p>
       </div>
-      <div class="sec-actions">
-        <button class="btn btn-ink btn-sm" type="button" data-open-add>+ Добавить вещь</button>
-        <button class="btn btn-ghost btn-sm" type="button" data-reset>Сбросить демо</button>
+      <div class="pipe-controls">
+        <label class="field compact"><span>Повод</span>
+          <select id="pipeOcc">
+            <option value="office">Офис</option>
+            <option value="walk">Прогулка</option>
+            <option value="date">Вечер</option>
+            <option value="sport">Спорт</option>
+          </select>
+        </label>
+        <label class="field compact"><span>Температура: <b id="pipeTempOut">+6°</b></span>
+          <input type="range" id="pipeTemp" min="-15" max="32" value="6">
+        </label>
+        <label class="field compact"><span>Пол</span>
+          <select id="pipeGender">
+            <option value="w">Женский</option>
+            <option value="m">Мужской</option>
+          </select>
+        </label>
       </div>
     </header>
 
-    <div class="wb-layout">
-      <!-- левая колонка: сетка вещей -->
-      <div class="wb-main">
-        <div class="wb-tools">
-          <div class="search">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.6 15.6 5 5"/></svg>
-            <input type="search" id="wbSearch" placeholder="Поиск: пальто, джинсы, сумка…" autocomplete="off">
-          </div>
-          <div class="chips" id="wbChips" role="group" aria-label="Фильтр по категории">
-            <button class="chip is-on" data-cat="all" type="button">Все</button>
-            <button class="chip" data-cat="outer" type="button">Верхняя</button>
-            <button class="chip" data-cat="top" type="button">Верх</button>
-            <button class="chip" data-cat="bottom" type="button">Низ</button>
-            <button class="chip" data-cat="dress" type="button">Платья</button>
-            <button class="chip" data-cat="shoes" type="button">Обувь</button>
-            <button class="chip" data-cat="bag" type="button">Сумки</button>
-          </div>
-        </div>
-
-        <div class="wb-grid" id="wbGrid" aria-live="polite"></div>
-        <p class="wb-empty" id="wbEmpty" hidden>Ничего не нашлось — попробуйте другой запрос или категорию.</p>
-      </div>
-
-      <!-- правая колонка: сборщик -->
-      <aside class="builder">
-        <div class="builder-card">
-          <p class="builder-label">Собери образ</p>
-
-          <label class="field">
-            <span>Повод</span>
-            <select id="occ">
-              <option value="office">Офис / работа</option>
-              <option value="walk">Прогулка / выходной</option>
-              <option value="date">Свидание / вечер</option>
-              <option value="sport">Спорт / дорога</option>
-            </select>
-          </label>
-
-          <label class="field">
-            <span>Температура: <b id="tempOut">+8°C</b></span>
-            <input type="range" id="temp" min="-20" max="35" value="8" step="1">
-          </label>
-
-          <button class="btn btn-accent btn-block" type="button" id="buildBtn">Собрать образ</button>
-
-          <div class="builder-out" id="builderOut" hidden>
-            <div class="look-strip" id="lookStrip"></div>
-            <p class="look-reason" id="lookReason"></p>
-            <div class="look-actions">
-              <button class="btn btn-ink btn-sm" type="button" id="wearBtn">Надеть сегодня</button>
-              <button class="btn btn-ghost btn-sm" type="button" id="againBtn">Ещё вариант</button>
-            </div>
-          </div>
-
-          <div class="wear-stats" id="wearStats"></div>
-        </div>
-
-        <div class="builder-card muted-card">
-          <p class="builder-label">Что не носится</p>
-          <ul class="unworn" id="unwornList"><li>Пока нет истории носки — наденьте пару образов.</li></ul>
-        </div>
+    <div class="pipe-layout">
+      <div class="funnel" id="funnel"></div>
+      <aside class="pipe-side">
+        <p class="builder-label">Что выжило после фильтров</p>
+        <div class="pool" id="funnelPool"></div>
+        <button class="btn btn-accent btn-block" type="button" id="pipeBuild">Собрать комплект из этих вещей</button>
+        <div class="pipe-result" id="pipeResult" hidden></div>
       </aside>
     </div>
   </div>
 </section>
 
-<!-- ── AI-стилист чат ───────────────────────────────────────── -->
-<section class="section" id="stylist">
-  <div class="wrap chat-grid">
-    <div class="chat-copy">
-      <p class="eyebrow">AI‑стилист 24/7</p>
-      <h2>«Это сочетается?» — спросите у шкафа</h2>
-      <p class="lead-sm">Стилист видит каждую вещь в гардеробе и историю носки. Поэтому он отвечает не «наденьте бежевое пальто», а «наденьте <b>ваше</b> бежевое пальто с <b>вашим</b> серым свитером».</p>
-      <ul class="checks">
-        <li>Подбирает образ под погоду и повод</li>
-        <li>Говорит, чего не хватает в шкафу</li>
-        <li>Проверяет покупку до заказа</li>
-        <li>Помнит, что вы не любите</li>
-      </ul>
-      <p class="note-small">В этом прототипе чат отвечает по правилам и на демо‑гардеробе — без внешнего API.</p>
+<!-- СЕГОДНЯ / ЗАВТРА -->
+<section class="section" id="today">
+  <div class="wrap">
+    <header class="sec-head split">
+      <div>
+        <p class="eyebrow">Что надеть</p>
+        <h2>Три варианта на сегодня и на завтра</h2>
+        <p class="sec-sub">Варианты не повторяют друг друга и не повторяют то, что вы носили на этой неделе.</p>
+      </div>
+      <div class="tabs" id="dayTabs">
+        <button class="tab is-on" data-day="today" type="button">Сегодня · +6°</button>
+        <button class="tab" data-day="tomorrow" type="button">Завтра · +9°</button>
+      </div>
+    </header>
+    <div class="variants" id="todayGrid"></div>
+  </div>
+</section>
+
+<!-- КАТАЛОГ -->
+<section class="section section-alt" id="wardrobe">
+  <div class="wrap">
+    <header class="sec-head split">
+      <div>
+        <p class="eyebrow">Каталог · 92 фото</p>
+        <h2>Вещи, из которых собирается комплект</h2>
+        <p class="sec-sub">Реальные фотографии каталога. Переключитесь на вариант «иконки» в шапке — та же страница, но с линейными иконками вместо фото.</p>
+      </div>
+      <div class="sec-actions">
+        <button class="btn btn-ghost btn-sm" type="button" id="shuffleCatalog">Перемешать</button>
+      </div>
+    </header>
+
+    <div class="wb-tools">
+      <div class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.6 15.6 5 5"/></svg>
+        <input type="search" id="wbSearch" placeholder="Поиск: платье, брюки, синий…" autocomplete="off">
+      </div>
+      <div class="chips" id="wbChips">
+        <button class="chip is-on" data-slot="all" type="button">Все</button>
+        <button class="chip" data-slot="outer" type="button">Верхнее</button>
+        <button class="chip" data-slot="top" type="button">Верх</button>
+        <button class="chip" data-slot="bottom" type="button">Низ</button>
+        <button class="chip" data-slot="dress" type="button">Платья</button>
+        <button class="chip" data-slot="shoes" type="button">Обувь</button>
+        <button class="chip" data-slot="hat" type="button">Головное</button>
+      </div>
     </div>
 
+    <div class="wb-grid" id="wbGrid"></div>
+    <p class="wb-empty" id="wbEmpty" hidden>Ничего не нашлось.</p>
+  </div>
+</section>
+
+<!-- ПРИМЕРКА -->
+<section class="section" id="fitting">
+  <div class="wrap">
+    <header class="sec-head">
+      <p class="eyebrow">Примерка</p>
+      <h2>Посмотрите комплект на человеке</h2>
+      <p class="sec-sub">Четыре модели — две девочки и два мальчика. Выберите модель, соберите комплект заново или примерите свой образ.</p>
+    </header>
+
+    <div class="fit-layout">
+      <div class="fit-side">
+        <div class="model-list" id="modelList"></div>
+        <div class="fit-card">
+          <p class="builder-label">Свой образ на модели</p>
+          <label class="field"><span>Повод</span>
+            <select id="fitOcc">
+              <option value="office">Офис</option>
+              <option value="walk">Прогулка</option>
+              <option value="date">Вечер</option>
+            </select>
+          </label>
+          <button class="btn btn-accent btn-block" type="button" id="fitBuild">Собрать образ</button>
+          <p class="tiny">Модель одета в вещи из каталога: силуэт и цвет каждой вещи — реальные, фото вещи — в карточке образа.</p>
+        </div>
+      </div>
+
+      <div class="stage-wrap">
+        <div class="stage" id="stage">
+          <div class="stage-art" id="stageArt"></div>
+          <div class="stage-badge" id="stageBadge">Мила · 38–40, 170 см</div>
+        </div>
+        <div class="stage-items" id="stageItems"></div>
+      </div>
+
+      <div class="upload">
+        <p class="builder-label">Или на вашем фото</p>
+        <div class="upload-box" id="uploadBox">
+          <input type="file" id="photoInput" accept="image/*" hidden>
+          <div class="upload-empty" id="uploadEmpty">
+            <b>Загрузите фото в полный рост</b>
+            <span>JPG или PNG, вертикальное, человек целиком</span>
+            <button class="btn btn-ink btn-sm" type="button" id="uploadBtn">Выбрать фото</button>
+          </div>
+          <div class="upload-stage" id="uploadStage" hidden>
+            <img id="userPhoto" alt="Ваше фото">
+            <div class="user-layers" id="userLayers"></div>
+          </div>
+        </div>
+        <div class="upload-controls" id="uploadControls" hidden>
+          <label class="field compact"><span>Масштаб одежды</span><input type="range" id="layerScale" min="60" max="150" value="100"></label>
+          <label class="field compact"><span>Сдвиг по высоте</span><input type="range" id="layerShift" min="-15" max="15" value="0"></label>
+          <button class="btn btn-ghost btn-sm btn-block" type="button" id="clearPhoto">Сбросить фото</button>
+          <p class="tiny">Это наложение-макет: одежда подгоняется по ползункам, а не генеративной моделью. Так честнее — и видно, что именно вы примеряете.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ЧАТ -->
+<section class="section section-alt" id="stylist">
+  <div class="wrap chat-grid">
+    <div class="chat-copy">
+      <p class="eyebrow">AI-стилист</p>
+      <h2>«Что надеть завтра на встречу?»</h2>
+      <p class="lead-sm">Стилист знает погоду, повод, ваш размер и историю носки. Он не советует «бежевое пальто» — он выбирает конкретную вещь из каталога и объясняет, почему именно её.</p>
+      <ul class="checks">
+        <li>Собирает комплект под погоду и повод</li>
+        <li>Объясняет каждый выбор</li>
+        <li>Показывает на модели</li>
+        <li>Помнит, что вы уже носили</li>
+      </ul>
+      <p class="note-small">В демо чат отвечает по правилам и работает на том же каталоге, без внешнего API.</p>
+    </div>
     <div class="chat">
       <div class="chat-head">
         <span class="avatar">О</span>
-        <div>
-          <b>Стилист «ОБРАЗ»</b>
-          <small>онлайн · видит 18 вещей</small>
-        </div>
+        <div><b>Стилист «ОБРАЗ»</b><small>онлайн · каталог 100 500</small></div>
         <span class="badge-demo">демо</span>
       </div>
       <div class="chat-body" id="chatBody">
-        <div class="msg bot">Привет. Я знаю, что в шкафу. Спросите: «что надеть на собеседование?», «с чем носить это пальто?», «что докупить на зиму?»</div>
+        <div class="msg bot">Привет. Скажите повод и погоду — соберу комплект и покажу на модели. Или спросите: «что надеть завтра?», «собери на свидание», «почему эти вещи?»</div>
       </div>
       <div class="chat-suggest" id="chatSuggest">
-        <button type="button">Что надеть на собеседование?</button>
-        <button type="button">С чем носить пальто?</button>
-        <button type="button">Что докупить на зиму?</button>
+        <button type="button">Что надеть завтра на встречу?</button>
+        <button type="button">Собери на свидание</button>
+        <button type="button">Почему эти вещи?</button>
       </div>
       <form class="chat-form" id="chatForm" autocomplete="off">
         <input id="chatInput" placeholder="Напишите стилисту…" aria-label="Сообщение стилисту">
@@ -260,172 +314,93 @@
   </div>
 </section>
 
-<!-- ── Примерка ─────────────────────────────────────────────── -->
-<section class="section section-alt" id="fitting">
-  <div class="wrap fit-grid">
-    <div class="fit-copy">
-      <p class="eyebrow">Виртуальная примерка</p>
-      <h2>Посмотрите на образ. На себе.</h2>
-      <p class="lead-sm">Виртуальная примерка — самая дорогая в разработке и самая обманчивая функция рынка. Мы делаем её честно: сначала коллаж образа, потом примерка на вашем фото, и всегда с пометкой «визуализация, посадка может отличаться».</p>
-      <div class="fit-note">
-        <b>Честно о демо</b>
-        <p>Слайдер ниже — на подготовленных изображениях. Генеративная примерка по своему фото требует GPU и стоит денег, поэтому на рынке она продаётся кредитами, а не «безлимитом».</p>
-      </div>
-      <p class="kbd-hint">Потяните ползунок ←→</p>
-    </div>
-
-    <div class="compare" id="compare">
-      <img class="cmp-img cmp-before" src="assets/img/look-before.svg" alt="Фигура до примерки: серая базовая одежда">
-      <div class="cmp-after-wrap" id="cmpAfterWrap">
-        <img class="cmp-img cmp-after" src="assets/img/look-after.svg" alt="Фигура после примерки: собранный образ с пальто и аксессуарами">
-      </div>
-      <div class="cmp-handle" id="cmpHandle" role="slider" tabindex="0" aria-label="Сравнение до и после" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-        <span class="cmp-line"></span>
-        <span class="cmp-knob">↔</span>
-      </div>
-      <span class="cmp-tag cmp-tag-l">до</span>
-      <span class="cmp-tag cmp-tag-r">после</span>
-    </div>
-  </div>
-</section>
-
-<!-- ── Проверка покупки ─────────────────────────────────────── -->
-<section class="section" id="purchase">
-  <div class="wrap purchase-grid">
-    <div class="pur-copy">
-      <p class="eyebrow">Проверка покупки</p>
-      <h2>Влюбились в вещь? Сначала посчитайте сочетания</h2>
-      <p class="lead-sm">Самый частый запрос рынка — «стоит ли покупать». Ответ считается по вашему гардеробу: сколько готовых образов собирается, чего не хватает и не дубль ли это.</p>
-    </div>
-
-    <form class="pur-form" id="purForm">
-      <div class="pur-row">
-        <label class="field">
-          <span>Что покупаете</span>
-          <select id="purCat">
-            <option value="outer">Верхняя одежда</option>
-            <option value="top">Верх</option>
-            <option value="bottom">Низ</option>
-            <option value="dress">Платье</option>
-            <option value="shoes">Обувь</option>
-            <option value="bag">Сумка</option>
-          </select>
-        </label>
-        <label class="field">
-          <span>Цвет</span>
-          <select id="purColor"></select>
-        </label>
-      </div>
-      <button class="btn btn-ink btn-block" type="submit">Проверить сочетаемость</button>
-    </form>
-
-    <div class="pur-result" id="purResult" hidden>
-      <div class="pur-verdict" id="purVerdict"></div>
-      <p class="pur-text" id="purText"></p>
-      <div class="look-strip" id="purStrip"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Тарифы ───────────────────────────────────────────────── -->
-<section class="section section-alt" id="pricing">
+<!-- ТАРИФЫ -->
+<section class="section" id="pricing">
   <div class="wrap">
     <header class="sec-head">
       <p class="eyebrow">Тарифы</p>
       <h2>Платите за результат, а не за «AI»</h2>
-      <p class="sec-sub">Цены демонстрационные, ориентир — рынок РФ: 399–990 ₽/мес. Примерки — кредитами, потому что каждая стоит денег.</p>
     </header>
-
     <div class="plans">
       <article class="plan">
         <h3>Старт</h3>
         <p class="plan-price">0 ₽<span>/ навсегда</span></p>
         <p class="plan-for">Попробовать без карты</p>
         <ul>
-          <li>30 вещей в гардеробе</li>
-          <li>30 подборов образа в месяц</li>
-          <li>История носки и статистика</li>
-          <li>3 примерки в подарок</li>
+          <li>3 комплекта в день</li>
+          <li>Примерка на 4 моделях</li>
+          <li>Каталог 100 500 вещей</li>
+          <li>История носки</li>
         </ul>
-        <a class="btn btn-ghost btn-block" href="#wardrobe">Начать бесплатно</a>
+        <a class="btn btn-ghost btn-block" href="#today">Начать бесплатно</a>
       </article>
-
       <article class="plan plan-hot">
         <span class="plan-flag">выбор большинства</span>
         <h3>Pro</h3>
         <p class="plan-price">490 ₽<span>/ месяц</span></p>
         <p class="plan-for">Гардероб каждый день</p>
         <ul>
-          <li>Безлимит вещей и образов</li>
+          <li>Безлимит комплектов и поводов</li>
           <li>Планировщик недели</li>
-          <li>Проверка покупок без ограничений</li>
-          <li>25 примерок в месяц</li>
-          <li>Batch‑загрузка: 10 вещей за раз</li>
+          <li>Примерка на своём фото без лимита</li>
+          <li>Свои вещи + каталог</li>
+          <li>Проверка покупки</li>
         </ul>
-        <a class="btn btn-accent btn-block" href="#wardrobe">Попробовать Pro</a>
+        <a class="btn btn-accent btn-block" href="#today">Попробовать Pro</a>
       </article>
-
       <article class="plan">
         <h3>Pro на год</h3>
         <p class="plan-price">3 900 ₽<span>/ год · 325 ₽/мес</span></p>
         <p class="plan-for">Экономия 34%</p>
         <ul>
           <li>Всё из Pro на 12 месяцев</li>
-          <li>300 примерок на год</li>
-          <li>Ранний доступ к новым функциям</li>
           <li>Экспорт гардероба в CSV</li>
+          <li>Ранний доступ к новым функциям</li>
         </ul>
-        <a class="btn btn-ghost btn-block" href="#wardrobe">Взять год</a>
+        <a class="btn btn-ghost btn-block" href="#pricing">Взять год</a>
       </article>
     </div>
-
-    <p class="plans-note">Отмена в один клик, удаление гардероба — одной кнопкой. Никаких «позвоните в поддержку, чтобы отписаться».</p>
   </div>
 </section>
 
-<!-- ── FAQ ──────────────────────────────────────────────────── -->
-<section class="section" id="faq">
+<!-- FAQ -->
+<section class="section section-alt" id="faq">
   <div class="wrap faq-wrap">
-    <header class="sec-head">
-      <p class="eyebrow">Вопросы</p>
-      <h2>Что обычно спрашивают</h2>
-    </header>
-
+    <header class="sec-head"><p class="eyebrow">Вопросы</p><h2>Что обычно спрашивают</h2></header>
     <div class="faq">
       <details open>
-        <summary>Нужно фотографировать весь шкаф?</summary>
-        <p>Нет. Начните с 10–15 вещей, которые носите чаще всего — этого хватает, чтобы алгоритм начал собирать рабочие образы. Остальное добавляйте по мере желания, гардероб не ломается от неполноты.</p>
+        <summary>Откуда 100 500 вещей, если фото 92?</summary>
+        <p>92 фотографии — это карточки товаров. В каталоге каждая модель представлена размерами 42–50, брендами и сезонами: 92 × размеры × варианты = 100 500 позиций. Воронка фильтрует именно позиции, поэтому счётчики падают так быстро.</p>
+      </details>
+      <details>
+        <summary>Как ИИ выбирает вещи?</summary>
+        <p>Шесть фильтров по очереди: пол и типаж, сезон и температура, повод, размер, цветовая совместимость (нейтрали, родственные и комплементарные тона), наличие нужных слоёв. Дальше — оценка по теплоте, свежести и истории носки.</p>
+      </details>
+      <details>
+        <summary>Примерка — это генерация или макет?</summary>
+        <p>На моделях — векторная визуализация: силуэт и цвет каждой вещи настоящие, но это иллюстрация. На вашем фото — наложение с ручной подгонкой ползунками. Генеративную примерку мы не обещаем: она стоит денег на каждую картинку.</p>
+      </details>
+      <details>
+        <summary>Можно добавить свои вещи?</summary>
+        <p>Да, в Pro. В демо каталог открыт целиком, чтобы было видно, как работает подбор. Свои вещи участвуют в тех же фильтрах.</p>
       </details>
       <details>
         <summary>Что с моими фотографиями?</summary>
-        <p>Фото хранятся в вашем аккаунте, не передаются третьим лицам и удаляются вместе с аккаунтом одной кнопкой. В этом прототипе всё вообще лежит в localStorage браузера и никуда не отправляется.</p>
+        <p>Всё работает в браузере: фото не отправляется на сервер и исчезает после закрытия вкладки или нажатия «Сбросить фото».</p>
       </details>
       <details>
-        <summary>Чем это отличается от Pinterest и подборок в соцсетях?</summary>
-        <p>Pinterest показывает чужие вещи, которых у вас нет. Здесь образ собирается только из ваших вещей — его можно надеть сегодня, не покупая ничего.</p>
-      </details>
-      <details>
-        <summary>Примерка правда работает?</summary>
-        <p>Примерка — визуализация, а не гарантия посадки. Мы показываем коллаж и генеративную примерку, но всегда помечаем результат как демонстрацию. Обещать «как в зеркале» — обман.</p>
-      </details>
-      <details>
-        <summary>Нужно ли приложение из App Store?</summary>
-        <p>Нет. Сервис работает как PWA: добавляется на домашний экран и выглядит как приложение. Это дешевле в разработке и не съедает 15–30% выручки на комиссиях сторов.</p>
-      </details>
-      <details>
-        <summary>Как считается «не ношу»?</summary>
-        <p>Каждый раз, когда вы нажимаете «надеть», вещь попадает в историю носки. Вещи без записей за 60 дней попадают в список «не ношу» — с ними можно расстаться или отдать в ресейл.</p>
+        <summary>Почему образы на сегодня и завтра разные?</summary>
+        <p>Разные погода и поводы, плюс история носки: вещь, которую вы отметили как надетую, не вернётся в комплект неделю.</p>
       </details>
     </div>
   </div>
 </section>
 
-<!-- ── Финальный CTA ────────────────────────────────────────── -->
 <section class="cta-final">
   <div class="wrap">
-    <h2>Загрузите 15 вещей сегодня —<br>завтра утром образ уже будет</h2>
-    <p>Бесплатно, без карты. Гардероб можно удалить одной кнопкой.</p>
-    <a class="btn btn-accent" href="#wardrobe">Открыть демо‑гардероб</a>
+    <h2>Соберите комплект на сегодня —<br>прямо на этой странице</h2>
+    <p>Без карты. Модели, каталог и ИИ уже здесь.</p>
+    <a class="btn btn-accent" href="#today">Что надеть сегодня</a>
   </div>
 </section>
 
@@ -435,56 +410,23 @@
   <div class="wrap foot-inner">
     <div>
       <a class="logo" href="#top"><span class="logo-mark">О</span><span class="logo-text">ОБРАЗ<em>гардероб · ИИ</em></span></a>
-      <p class="foot-note">Демо‑прототип для анализа рынка fashion‑tech. Не является публичной офертой, не собирает персональные данные.</p>
+      <p class="foot-note">Демо-прототип. Фотографии вещей — из открытого датасета clothing-dataset-small (CC), модели — векторные иллюстрации. Не является публичной офертой.</p>
     </div>
-    <nav class="foot-nav" aria-label="Подвал">
-      <a href="#how">Как работает</a>
-      <a href="#wardrobe">Гардероб</a>
+    <nav class="foot-nav">
+      <a href="#pipeline">Как ИИ собирает</a>
+      <a href="#today">Сегодня / Завтра</a>
+      <a href="#fitting">Примерка</a>
       <a href="#pricing">Тарифы</a>
-      <a href="#faq">Вопросы</a>
+      <a href="icons.html">Вариант с иконками</a>
     </nav>
-    <p class="foot-copy">© 2026 ОБРАЗ · локальная сборка</p>
+    <p class="foot-copy">© 2026 ОБРАЗ</p>
   </div>
 </footer>
 
-<!-- ── Модалка «Добавить вещь» ──────────────────────────────── -->
-<div class="modal" id="addModal" hidden>
-  <div class="modal-back" data-close-add></div>
-  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="addTitle">
-    <button class="modal-x" type="button" data-close-add aria-label="Закрыть">×</button>
-    <h3 id="addTitle">Добавить вещь</h3>
-    <p class="modal-sub">Фото останется в браузере. Категория и цвет нужны, чтобы вещь попала в образы.</p>
-    <form id="addForm">
-      <label class="field">
-        <span>Название</span>
-        <input type="text" id="addName" maxlength="40" placeholder="Например: серый свитер" required>
-      </label>
-      <div class="pur-row">
-        <label class="field">
-          <span>Категория</span>
-          <select id="addCat">
-            <option value="outer">Верхняя одежда</option>
-            <option value="top">Верх</option>
-            <option value="bottom">Низ</option>
-            <option value="dress">Платье</option>
-            <option value="shoes">Обувь</option>
-            <option value="bag">Сумка</option>
-          </select>
-        </label>
-        <label class="field">
-          <span>Цвет</span>
-          <select id="addColor"></select>
-        </label>
-      </div>
-      <label class="field">
-        <span>Фото (необязательно)</span>
-        <input type="file" id="addFile" accept="image/*">
-      </label>
-      <button class="btn btn-accent btn-block" type="submit">Добавить в гардероб</button>
-    </form>
-  </div>
-</div>
-
+<script src="assets/js/items.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/outfits.js"></script>
+<script src="assets/js/model.js"></script>
 <script src="assets/js/app.js"></script>
 </body>
 </html>
