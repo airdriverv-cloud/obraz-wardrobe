@@ -43,6 +43,8 @@
 | `site/assets/js/data.js` | справочники, цветовые правила (нейтрали, родственные, комплементарные тона) |
 | `site/assets/img/items/` | 92 фото вещей (WebP, 420×420, фон выбелен) |
 | `tools/fetch_items.py` | скачивание и нормализация фото из открытого датасета |
+| `tools/gen_models.py` | генерация фото моделей через локальный ComfyUI (SDXL) |
+| `site/assets/img/models/` | 4 сгенерированных фото моделей |
 | `tools/build_items_js.py` | `items.json` → `items.js` |
 | `ANALYSIS.md` / `ANALYSIS.pdf` | аналитический отчёт: 5 сайтов, 22 конкурента, рекомендации |
 | `tools/md2docx.py` | сборка PDF из Markdown |
