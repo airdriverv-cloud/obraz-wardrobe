@@ -40,8 +40,8 @@
       return `${p.def}
       <path d="M118 134 Q150 124 182 134 L194 166 L186 176 L186 300 Q150 312 114 300 L114 176 L106 166 Z"
             fill="${p.fill}" stroke="${p.line}" stroke-width="1.4"/>
-      <path d="M116 152 Q104 200 100 300 L114 302 Q118 210 126 168 Z" fill="${p.fill}" stroke="${p.line}" stroke-width="1.3"/>
-      <path d="M184 152 Q196 200 200 300 L186 302 Q182 210 174 168 Z" fill="${p.fill}" stroke="${p.line}" stroke-width="1.3"/>
+      <path d="M116 150 Q102 210 100 300 L120 304 Q122 214 128 168 Z" fill="${p.fill}" stroke="${p.line}" stroke-width="1.3"/>
+      <path d="M184 150 Q198 210 200 300 L180 304 Q178 214 172 168 Z" fill="${p.fill}" stroke="${p.line}" stroke-width="1.3"/>
       <path d="M118 134 Q150 146 182 134" fill="none" stroke="${p.line}" stroke-width="1.1" opacity=".55"/>`;
     },
 
@@ -50,8 +50,8 @@
       return `${p.def}
       <path d="M118 134 Q150 124 182 134 L192 166 L182 176 L182 310 Q150 320 118 310 L118 176 L108 166 Z"
             fill="${p.fill}" stroke="${p.line}" stroke-width="1.4"/>
-      <path d="M116 150 Q106 208 104 300 L116 302 Q118 212 126 166 Z" fill="${p.fill}" stroke="${p.line}" stroke-width="1.2"/>
-      <path d="M184 150 Q194 208 196 300 L184 302 Q182 212 174 166 Z" fill="${p.fill}" stroke="${p.line}" stroke-width="1.2"/>
+      <path d="M116 150 Q104 208 102 300 L120 302 Q122 212 128 166 Z" fill="${p.fill}" stroke="${p.line}" stroke-width="1.2"/>
+      <path d="M184 150 Q196 208 198 300 L180 302 Q178 212 172 166 Z" fill="${p.fill}" stroke="${p.line}" stroke-width="1.2"/>
       <path d="M150 150 L150 316" stroke="${p.line}" stroke-width="1" opacity=".5"/>
       <path d="M140 132 L150 152 L160 132 L156 127 L150 136 L144 127 Z" fill="${shade(hex, 0.3)}" stroke="${p.line}" stroke-width=".9"/>
       <circle cx="150" cy="186" r="1.7" fill="${p.line}" opacity=".55"/>
@@ -62,15 +62,18 @@
     coat(hex) {
       const p = paint(hex, 'g' + uid++);
       return `${p.def}
-      <path d="M114 130 Q150 118 186 130 L198 168 L190 182 L186 420 Q150 430 114 420 L110 182 L102 168 Z"
+      <path d="M118 132 Q150 120 182 132 L192 170 L188 384 Q150 396 112 384 L108 170 Z"
             fill="${p.fill}" stroke="${p.line}" stroke-width="1.5"/>
-      <path d="M116 148 Q106 240 104 336 L116 338 Q120 248 124 166 Z" fill="${p.fill}" stroke="${p.line}" stroke-width="1.2"/>
-      <path d="M184 148 Q194 240 196 336 L184 338 Q180 248 176 166 Z" fill="${p.fill}" stroke="${p.line}" stroke-width="1.2"/>
-      <path d="M150 150 L150 424" stroke="${p.line}" stroke-width="1.1" opacity=".45"/>
-      <path d="M124 132 L150 186 L176 132 L168 126 L150 160 L132 126 Z" fill="${shade(hex, 0.26)}" stroke="${p.line}" stroke-width=".9"/>
-      <circle cx="158" cy="220" r="2.2" fill="${p.line}" opacity=".45"/>
-      <circle cx="158" cy="266" r="2.2" fill="${p.line}" opacity=".45"/>
-      <path d="M114 292 L136 292" stroke="${p.line}" stroke-width="1" opacity=".35"/>`;
+      <path d="M116 150 Q102 210 100 296 Q100 318 106 330 L124 326 Q118 300 118 268 Q120 206 126 168 Z"
+            fill="${p.fill}" stroke="${p.line}" stroke-width="1.3"/>
+      <path d="M184 150 Q198 210 200 296 Q200 318 194 330 L176 326 Q182 300 182 268 Q180 206 174 168 Z"
+            fill="${p.fill}" stroke="${p.line}" stroke-width="1.3"/>
+      <path d="M132 130 Q150 150 168 130 L176 140 Q150 166 124 140 Z"
+            fill="${shade(hex, 0.26)}" stroke="${p.line}" stroke-width="1"/>
+      <path d="M150 158 L150 390" stroke="${p.line}" stroke-width="1.1" opacity=".4"/>
+      <circle cx="158" cy="212" r="2.2" fill="${p.line}" opacity=".45"/>
+      <circle cx="158" cy="256" r="2.2" fill="${p.line}" opacity=".45"/>
+      <path d="M112 300 L138 300" stroke="${p.line}" stroke-width="1" opacity=".3"/>`;
     },
 
     pants(hex) {
