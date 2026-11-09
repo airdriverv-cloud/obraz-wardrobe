@@ -3,6 +3,8 @@ _shot*.png
 _chrome/
 _chrome2/
 _c3/
+.gh/
+.dsh-office-*/
 tools/__pycache__/
 *.pyc
 

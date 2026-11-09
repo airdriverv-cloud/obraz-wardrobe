@@ -3,6 +3,8 @@
 Прототип сервиса «цифровой гардероб + AI-стилист» и аналитический отчёт по рынку fashion-tech.
 Собран по итогам разбора пяти российских проектов: Tidy, YeetStyle, Garde, Wearly, LOOKLAB.
 
+**Живая демонстрация:** https://airdriverv-cloud.github.io/obraz-wardrobe/
+
 ## Что в репозитории
 
 | Путь | Что это |
