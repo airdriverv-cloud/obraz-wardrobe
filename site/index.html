@@ -35,9 +35,10 @@
     <nav class="nav">
       <a href="#pipeline">Как ИИ собирает</a>
       <a href="#today">Сегодня / Завтра</a>
-      <a href="#wardrobe">Каталог</a>
+      <a href="#market">Витрина</a>
       <a href="#fitting">Примерка</a>
-      <a href="#pricing">Тарифы</a>
+      <a href="#seller">Селлерам</a>
+      <a href="#delivery">Доставка</a>
     </nav>
     <a class="mode-switch" id="modeSwitch" href="icons.html" title="Другой вариант оформления">
       <span class="mode-dot"></span> <span class="mode-label">Иконки</span>
@@ -218,6 +219,134 @@
   </div>
 </section>
 
+<!-- ВИТРИНА СЕЛЛЕРОВ -->
+<section class="section" id="market">
+  <div class="wrap">
+    <header class="sec-head split">
+      <div>
+        <p class="eyebrow">Витрина · каталог селлеров</p>
+        <h2>Вещи, которые можно купить прямо здесь</h2>
+        <p class="sec-sub">Карточки создают сами селлеры. У нас нет складов, персонала и приёмки: вещь едет от селлера в ПВЗ, поэтому комиссия 6%, а не 19%.</p>
+      </div>
+      <div class="market-tools">
+        <span class="market-count" id="marketCount"></span>
+        <select id="marketSort" class="select-sm" aria-label="Сортировка">
+          <option value="popular">По популярности</option>
+          <option value="cheap">Сначала дешёвые</option>
+          <option value="expensive">Сначала дорогие</option>
+        </select>
+        <select id="marketService" class="select-sm" aria-label="Служба доставки">
+          <option value="all">Любая доставка</option>
+          <option value="cdek">СДЭК</option>
+          <option value="pek">ПЭК</option>
+          <option value="yandex">Яндекс Доставка</option>
+          <option value="ozon">Ozon Доставка</option>
+          <option value="post">Почта России</option>
+        </select>
+      </div>
+    </header>
+
+    <div class="market-layout">
+      <div>
+        <div class="chips market-chips" id="marketFilters">
+          <button class="chip is-on" data-bucket="all" type="button">Все</button>
+          <button class="chip" data-bucket="low" type="button">до 3 000 ₽</button>
+          <button class="chip" data-bucket="mid" type="button">3 000–6 000 ₽</button>
+          <button class="chip" data-bucket="high" type="button">дороже 6 000 ₽</button>
+        </div>
+        <div class="market-grid" id="marketGrid"></div>
+        <div class="market-more" id="marketMore"></div>
+      </div>
+
+      <aside class="cart-card">
+        <p class="builder-label">Образ и доставка</p>
+        <div id="cartBox"></div>
+      </aside>
+    </div>
+
+    <div class="checkout-result" id="checkoutResult" hidden></div>
+  </div>
+</section>
+
+<!-- КАБИНЕТ СЕЛЛЕРА -->
+<section class="section section-alt" id="seller">
+  <div class="wrap">
+    <header class="sec-head split">
+      <div>
+        <p class="eyebrow">Селлерам</p>
+        <h2>Своя карточка за две минуты</h2>
+        <p class="sec-sub">Загрузите фото, поставьте цену, выберите службы доставки — карточка сразу появляется на витрине. Никакой модерации на этом этапе, никакого склада.</p>
+      </div>
+    </header>
+
+    <div class="seller-layout">
+      <form class="seller-form" id="sellerForm">
+        <div class="seller-row">
+          <label class="field"><span>Название вещи</span>
+            <input type="text" id="spName" placeholder="Пальто из шерсти" required>
+          </label>
+          <label class="field"><span>Бренд / имя магазина</span>
+            <input type="text" id="spBrand" placeholder="Лён и лотос">
+          </label>
+        </div>
+        <div class="seller-row">
+          <label class="field"><span>Категория</span>
+            <select id="spSlot">
+              <option value="outer">Верхняя одежда</option>
+              <option value="top">Верх</option>
+              <option value="bottom">Низ</option>
+              <option value="dress">Платье</option>
+              <option value="shoes">Обувь</option>
+              <option value="hat">Головной убор</option>
+            </select>
+          </label>
+          <label class="field"><span>Город отправки</span>
+            <select id="spCity">
+              <option>Москва</option><option>Санкт-Петербург</option><option>Казань</option>
+              <option>Екатеринбург</option><option>Новосибирск</option><option>Краснодар</option>
+              <option>Владивосток</option>
+            </select>
+          </label>
+        </div>
+        <div class="seller-row">
+          <label class="field"><span>Цена, ₽</span>
+            <input type="number" id="spPrice" min="300" step="100" value="4900" required>
+          </label>
+          <label class="field"><span>Фото вещи</span>
+            <input type="file" id="spPhoto" accept="image/*">
+          </label>
+        </div>
+
+        <fieldset class="seller-services">
+          <legend>Службы доставки</legend>
+          <label><input type="checkbox" class="sp-service" value="cdek" checked> СДЭК</label>
+          <label><input type="checkbox" class="sp-service" value="pek"> ПЭК</label>
+          <label><input type="checkbox" class="sp-service" value="yandex" checked> Яндекс Доставка</label>
+          <label><input type="checkbox" class="sp-service" value="ozon"> Ozon Доставка</label>
+          <label><input type="checkbox" class="sp-service" value="post"> Почта России</label>
+        </fieldset>
+
+        <button class="btn btn-accent btn-block" type="submit">Опубликовать карточку</button>
+        <p class="tiny">Фото остаётся в браузере. Если не выбрать файл, будет использовано фото похожей вещи из демо-каталога.</p>
+      </form>
+
+      <aside class="seller-side">
+        <div class="calc-card">
+          <p class="builder-label">Что останется вам</p>
+          <div class="calc" id="spCalc"><p class="tiny">Введите цену, чтобы увидеть расчёт.</p></div>
+        </div>
+        <div class="seller-result" id="sellerResult" hidden></div>
+        <ul class="checks">
+          <li>Комиссия 6% с проданной вещи</li>
+          <li>Селлер сам относит посылку в ПВЗ</li>
+          <li>Деньги — через 3 дня после получения</li>
+          <li>Свой каталог или импорт карточек</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
 <!-- ПРИМЕРКА -->
 <section class="section" id="fitting">
   <div class="wrap">
@@ -272,6 +401,74 @@
           <button class="btn btn-ghost btn-sm btn-block" type="button" id="clearPhoto">Сбросить фото</button>
           <p class="tiny">Это наложение-макет: одежда подгоняется по ползункам, а не генеративной моделью. Так честнее — и видно, что именно вы примеряете.</p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ДОСТАВКА -->
+<section class="section section-alt" id="delivery">
+  <div class="wrap">
+    <header class="sec-head">
+      <p class="eyebrow">Доставка</p>
+      <h2>Пять служб, ноль складов</h2>
+      <p class="sec-sub">Селлер упаковывает вещь и сам относит её в ПВЗ. Мы передаём заказ, считаем стоимость и печатаем накладную. Склад, приёмка и персонал не нужны — это и есть разница в цене.</p>
+    </header>
+
+    <div class="delivery-grid">
+      <div class="delivery-calc">
+        <div class="delivery-controls">
+          <label class="field compact"><span>Город</span><select id="deliveryCity"></select></label>
+          <label class="field compact grow"><span>Вес посылки: <b id="deliveryWeightOut">1.0 кг</b></span>
+            <input type="range" id="deliveryWeight" min="5" max="50" value="10">
+          </label>
+        </div>
+        <div id="deliveryTable"></div>
+      </div>
+
+      <div class="delivery-flow">
+        <div class="flow-step"><span>1</span><div><b>Покупатель оформляет заказ</b><p>Выбирает службу и ПВЗ. Оплата на сайте, деньги лежат у нас до получения.</p></div></div>
+        <div class="flow-step"><span>2</span><div><b>Селлер печатает накладную</b><p>Мы присылаем штрихкод. Упаковал — и отнёс в ближайший ПВЗ, без курьера и склада.</p></div></div>
+        <div class="flow-step"><span>3</span><div><b>Деньги через 3 дня</b><p>Покупатель получил — селлеру уходит сумма минус 6%. Возврат оплачивает только обратную доставку.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ЭКОНОМИКА И ИНТЕГРАЦИЯ -->
+<section class="section" id="compare">
+  <div class="wrap">
+    <header class="sec-head">
+      <p class="eyebrow">Экономика</p>
+      <h2>Почему дешевле — и где мы не будем врать</h2>
+    </header>
+
+    <div class="cmp-layout">
+      <div class="cmp-card">
+        <p class="builder-label">Сравнение издержек</p>
+        <table class="dtable cmp-table">
+          <thead><tr><th></th><th>Wildberries</th><th>Ozon</th><th>ОБРАЗ</th></tr></thead>
+          <tbody>
+            <tr><td>Комиссия</td><td>19–25%</td><td>15–22%</td><td class="hl">6%</td></tr>
+            <tr><td>Логистика</td><td>60–120 ₽ с продавца</td><td>50–150 ₽</td><td>платит покупатель</td></tr>
+            <tr><td>Склад и хранение</td><td>платно</td><td>платно</td><td class="hl">нет</td></tr>
+            <tr><td>Приёмка и персонал</td><td>на стороне селлера</td><td>на стороне селлера</td><td class="hl">нет</td></tr>
+            <tr><td>Пальто за 6 900 ₽</td><td>≈ 7 900–8 600 ₽</td><td>≈ 7 600–8 300 ₽</td><td class="hl">6 900 ₽ + доставка</td></tr>
+          </tbody>
+        </table>
+        <p class="tiny">Оценка по открытым тарифам на ноябрь 2026. Комиссии и логистика маркетплейсов зависят от категории, оборота и схемы работы.</p>
+      </div>
+
+      <div class="cmp-card">
+        <p class="builder-label">Подключить каталог WB или Ozon</p>
+        <ul class="verdict">
+          <li class="yes"><b>Да:</b> импорт своих карточек через API продавца. У селлера уже есть ключ — витрина наполняется автоматически, цены и остатки подтягиваются.</li>
+          <li class="yes"><b>Да:</b> партнёрские ссылки «купить на WB» для вещей, которых у нас нет.</li>
+          <li class="no"><b>Нет:</b> оформить заказ WB или Ozon внутри нашего сайта нельзя. Публичного checkout API у них нет — только витрина и переход.</li>
+          <li class="no"><b>Нет:</b> «всегда дешевле WB» — не гарантия. Маркетплейс субсидирует логистику и добивает цену скидкой за оборот; мы дешевле только там, где решает комиссия.</li>
+          <li class="warn"><b>Осторожно:</b> синхронизация остатков идёт с задержкой — можно продать вещь, которой уже нет.</li>
+        </ul>
+        <p class="cmp-pos"><b>Моя позиция:</b> импорт карточек — делать. Изображать, что мы заменяем WB — нет: покупатель всё равно уйдёт на маркетплейс за отзывами и ПВЗ. Честнее быть витриной, которая приводит в магазин селлера, и брать 6% за сам факт продажи.</p>
       </div>
     </div>
   </div>
@@ -423,10 +620,44 @@
   </div>
 </footer>
 
+<!-- МОДАЛКА ОФОРМЛЕНИЯ -->
+<div class="modal" id="checkoutModal" hidden>
+  <div class="modal-back" data-close-checkout></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+    <button class="modal-x" type="button" data-close-checkout aria-label="Закрыть">×</button>
+    <p class="eyebrow">Оформление заказа</p>
+    <h3 id="checkoutTitle">—</h3>
+    <p class="modal-sub" id="checkoutMeta">—</p>
+    <form id="checkoutForm">
+      <label class="field"><span>Имя</span>
+        <input type="text" id="checkoutName" placeholder="Анна" required>
+      </label>
+      <label class="field"><span>Телефон</span>
+        <input type="text" id="checkoutPhone" placeholder="+7 999 000-00-00" required>
+      </label>
+      <div class="seller-row">
+        <label class="field"><span>Город</span>
+          <select id="checkoutCity">
+            <option>Москва</option><option>Санкт-Петербург</option><option>Казань</option>
+            <option>Екатеринбург</option><option>Новосибирск</option><option>Краснодар</option>
+            <option>Владивосток</option>
+          </select>
+        </label>
+        <label class="field"><span>Доставка</span>
+          <select id="checkoutService"></select>
+        </label>
+      </div>
+      <button class="btn btn-accent btn-block" type="submit">Оформить</button>
+      <p class="tiny">Демо: заказ никуда не уходит, деньги не списываются.</p>
+    </form>
+  </div>
+</div>
+
 <script src="assets/js/items.js"></script>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/outfits.js"></script>
 <script src="assets/js/model.js"></script>
 <script src="assets/js/app.js"></script>
+<script src="assets/js/market.js"></script>
 </body>
 </html>

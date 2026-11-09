@@ -486,6 +486,24 @@
     }
   }
 
+  /* ── наружу для маркетплейса ─────────────────────────── */
+  window.OBRAZ_UI = {
+    itemVisual, state,
+    setOutfit(items, title) {
+      state.current = {
+        items,
+        mood: { title: title || 'Ваш образ', tag: 'собран вручную' },
+        reason: 'образ собран вами на витрине селлеров',
+        fit: 100,
+        occ: 'walk',
+        temp: D.WEATHER.find(w => w.day === state.day).temp
+      };
+      renderModels();
+      renderStage();
+      document.getElementById('fitting').scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   /* ── старт ───────────────────────────────────────────── */
   function init() {
     renderCatalog();
