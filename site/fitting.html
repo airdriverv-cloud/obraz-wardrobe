@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Примерка на моделях и на своём фото — ОБРАЗ</title>
+<meta name="description" content="Четыре модели: две девочки и два мальчика. Любой комплект — на них, или загрузите своё фото в полный рост.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>(function(){var m=new URLSearchParams(location.search).get('mode')||localStorage.getItem('obraz-mode')||'images';document.documentElement.dataset.mode=m==='icons'?'icons':'images';})();</script>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap head-inner">
+    <a class="logo" href="index.html"><span class="logo-mark">О</span><span class="logo-text">ОБРАЗ<em>гардероб · ИИ</em></span></a>
+    <nav class="nav">
+      <a href="catalog.html">Каталог</a>
+      <a href="stylist.html">ИИ-стилист</a>
+      <a href="fitting.html">Примерка</a>
+      <a href="delivery.html">Доставка</a>
+      <a href="sellers.html">Селлерам</a>
+    </nav>
+    <a class="mode-switch" id="modeSwitch" href="?mode=icons"><span class="mode-dot"></span><span class="mode-label">Иконки</span></a>
+    <a class="btn btn-ink btn-sm" href="catalog.html">В каталог</a>
+  </div>
+</header>
+
+<main>
+<section class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot"></span> Примерка</p>
+    <h1>Посмотрите комплект на человеке</h1>
+    <p class="lead">Четыре модели — две девочки и два мальчика. Выберите модель, соберите образ заново или загрузите своё фото в полный рост.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="fit-layout">
+      <div class="fit-side">
+        <div class="model-list" id="modelList"></div>
+        <div class="fit-card">
+          <p class="builder-label">Собрать образ на модели</p>
+          <label class="field"><span>Повод</span>
+            <select id="fitOcc">
+              <option value="office">Офис</option>
+              <option value="walk">Прогулка</option>
+              <option value="date">Вечер</option>
+            </select>
+          </label>
+          <button class="btn btn-accent btn-block" type="button" id="fitBuild">Собрать образ</button>
+          <p class="tiny">Модель одета в вещи из каталога: силуэт и цвет каждой вещи настоящие.</p>
+        </div>
+      </div>
+
+      <div class="stage-wrap">
+        <div class="stage" id="stage">
+          <div class="stage-art" id="stageArt"></div>
+          <div class="stage-badge" id="stageBadge">Мила</div>
+        </div>
+        <div class="stage-items" id="stageItems"></div>
+        <div class="related" style="justify-content:center">
+          <a href="stylist.html">Собрать комплект у ИИ →</a>
+          <a href="catalog.html">Выбрать вещи самому →</a>
+        </div>
+      </div>
+
+      <div class="upload">
+        <p class="builder-label">Или на вашем фото</p>
+        <div class="upload-box" id="uploadBox">
+          <input type="file" id="photoInput" accept="image/*" hidden>
+          <div class="upload-empty" id="uploadEmpty">
+            <b>Загрузите фото в полный рост</b>
+            <span>JPG или PNG, вертикальное, человек целиком</span>
+            <button class="btn btn-ink btn-sm" type="button" id="uploadBtn">Выбрать фото</button>
+          </div>
+          <div class="upload-stage" id="uploadStage" hidden>
+            <img id="userPhoto" alt="Ваше фото">
+            <div class="user-layers" id="userLayers"></div>
+          </div>
+        </div>
+        <div class="upload-controls" id="uploadControls" hidden>
+          <label class="field compact"><span>Масштаб одежды</span><input type="range" id="layerScale" min="60" max="150" value="100"></label>
+          <label class="field compact"><span>Сдвиг по высоте</span><input type="range" id="layerShift" min="-15" max="15" value="0"></label>
+          <button class="btn btn-ghost btn-sm btn-block" type="button" id="clearPhoto">Сбросить фото</button>
+          <p class="tiny">Наложение-макет: одежда подгоняется ползунками, а не генеративной моделью. Фото не покидает браузер.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-inner">
+    <div>
+      <a class="logo" href="index.html"><span class="logo-mark">О</span><span class="logo-text">ОБРАЗ<em>гардероб · ИИ</em></span></a>
+      <p class="foot-note">Модели — векторные иллюстрации, нарисованные для демо. Не является публичной офертой.</p>
+    </div>
+    <nav class="foot-nav">
+      <a href="catalog.html">Каталог</a>
+      <a href="stylist.html">ИИ-стилист</a>
+      <a href="fitting.html">Примерка</a>
+      <a href="delivery.html">Доставка</a>
+      <a href="sellers.html">Селлерам</a>
+    </nav>
+    <p class="foot-copy">© 2026 ОБРАЗ</p>
+  </div>
+</footer>
+
+<script src="assets/js/items.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/outfits.js"></script>
+<script src="assets/js/model.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/fitting.js"></script>
+</body>
+</html>

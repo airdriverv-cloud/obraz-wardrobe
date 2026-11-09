@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Доставка: СДЭК, ПЭК, Яндекс, Ozon, Почта — ОБРАЗ</title>
+<meta name="description" content="Калькулятор доставки по городу и весу, сроки и условия. Селлер сам относит посылку в ПВЗ — без складов и курьеров со стороны сервиса.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>(function(){var m=new URLSearchParams(location.search).get('mode')||localStorage.getItem('obraz-mode')||'images';document.documentElement.dataset.mode=m==='icons'?'icons':'images';})();</script>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap head-inner">
+    <a class="logo" href="index.html"><span class="logo-mark">О</span><span class="logo-text">ОБРАЗ<em>гардероб · ИИ</em></span></a>
+    <nav class="nav">
+      <a href="catalog.html">Каталог</a>
+      <a href="stylist.html">ИИ-стилист</a>
+      <a href="fitting.html">Примерка</a>
+      <a href="delivery.html">Доставка</a>
+      <a href="sellers.html">Селлерам</a>
+    </nav>
+    <a class="mode-switch" id="modeSwitch" href="?mode=icons"><span class="mode-dot"></span><span class="mode-label">Иконки</span></a>
+    <a class="btn btn-ink btn-sm" href="catalog.html">В каталог</a>
+  </div>
+</header>
+
+<main>
+<section class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot"></span> Доставка</p>
+    <h1>Пять служб, ноль складов</h1>
+    <p class="lead">Селлер упаковывает вещь и сам относит её в ПВЗ. Мы передаём заказ, считаем стоимость и печатаем накладную. Склад, приёмка и персонал не нужны — это и есть разница в цене.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="delivery-grid">
+      <div class="delivery-calc">
+        <div class="delivery-controls">
+          <label class="field compact"><span>Город</span><select id="deliveryCity"></select></label>
+          <label class="field compact grow"><span>Вес посылки: <b id="deliveryWeightOut">1.0 кг</b></span>
+            <input type="range" id="deliveryWeight" min="5" max="50" value="10">
+          </label>
+        </div>
+        <div id="deliveryTable"></div>
+      </div>
+
+      <div class="delivery-flow">
+        <div class="flow-step"><span>1</span><div><b>Покупатель оформляет заказ</b><p>Выбирает службу и ПВЗ. Оплата на сайте, деньги лежат у нас до получения.</p></div></div>
+        <div class="flow-step"><span>2</span><div><b>Селлер печатает накладную</b><p>Мы присылаем штрихкод. Упаковал — и отнёс в ближайший ПВЗ, без курьера и склада.</p></div></div>
+        <div class="flow-step"><span>3</span><div><b>Деньги через 3 дня</b><p>Покупатель получил — селлеру уходит сумма минус 6%. Возврат оплачивает только обратную доставку.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <header class="sec-head"><p class="eyebrow">Условия</p><h2>Что важно знать</h2></header>
+    <div class="tiles">
+      <div class="tile">
+        <span class="tile-kicker">Сроки</span>
+        <h3>1–9 дней</h3>
+        <p>Яндекс — от 1 дня, СДЭК и Ozon — 2–4, ПЭК — 3–6, Почта — 4–9. Срок считается от передачи посылки в ПВЗ, а не от оплаты.</p>
+      </div>
+      <div class="tile">
+        <span class="tile-kicker">Возврат</span>
+        <h3>14 дней на примерку</h3>
+        <p>Вернуть можно всё, кроме нижнего белья и украшений. Обратную доставку оплачивает покупатель, вещь возвращается селлеру.</p>
+      </div>
+      <div class="tile">
+        <span class="tile-kicker">Оплата</span>
+        <h3>Деньги у сервиса</h3>
+        <p>Покупатель платит нам, селлер получает через 3 дня после получения. Так покупатель защищён, а селлер не ждёт месяц.</p>
+      </div>
+      <div class="tile wide">
+        <span class="tile-kicker">Почему так дёшево</span>
+        <h3>Нет склада — нет наценки</h3>
+        <p>Маркетплейс принимает товар, хранит, собирает заказ и платит персоналу — всё это заложено в комиссию 19–25%. У нас вещь не покидает селлера до момента продажи: он упаковал и отнёс. Отсюда 6% и цена ниже.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-inner">
+    <div>
+      <a class="logo" href="index.html"><span class="logo-mark">О</span><span class="logo-text">ОБРАЗ<em>гардероб · ИИ</em></span></a>
+      <p class="foot-note">Расчёт демонстрационный, тарифы служб — приблизительные. Не является публичной офертой.</p>
+    </div>
+    <nav class="foot-nav">
+      <a href="catalog.html">Каталог</a>
+      <a href="stylist.html">ИИ-стилист</a>
+      <a href="fitting.html">Примерка</a>
+      <a href="delivery.html">Доставка</a>
+      <a href="sellers.html">Селлерам</a>
+    </nav>
+    <p class="foot-copy">© 2026 ОБРАЗ</p>
+  </div>
+</footer>
+
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/delivery.js"></script>
+</body>
+</html>

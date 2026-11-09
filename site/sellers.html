@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Селлерам: карточка товара и комиссия 6% — ОБРАЗ</title>
+<meta name="description" content="Создайте карточку за две минуты: комиссия 6%, без склада и приёмки, доставка СДЭК, ПЭК, Яндекс, Ozon и Почта. Импорт каталога с WB и Ozon.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>(function(){var m=new URLSearchParams(location.search).get('mode')||localStorage.getItem('obraz-mode')||'images';document.documentElement.dataset.mode=m==='icons'?'icons':'images';})();</script>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap head-inner">
+    <a class="logo" href="index.html"><span class="logo-mark">О</span><span class="logo-text">ОБРАЗ<em>гардероб · ИИ</em></span></a>
+    <nav class="nav">
+      <a href="catalog.html">Каталог</a>
+      <a href="stylist.html">ИИ-стилист</a>
+      <a href="fitting.html">Примерка</a>
+      <a href="delivery.html">Доставка</a>
+      <a href="sellers.html">Селлерам</a>
+    </nav>
+    <a class="mode-switch" id="modeSwitch" href="?mode=icons"><span class="mode-dot"></span><span class="mode-label">Иконки</span></a>
+    <a class="btn btn-accent btn-sm" href="#sellerForm">Опубликовать</a>
+  </div>
+</header>
+
+<main>
+<section class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot"></span> Селлерам</p>
+    <h1>Комиссия 6% и никакого склада</h1>
+    <p class="lead">Вы создаёте карточку, получаете заказ, печатаете накладную и сами относите посылку в ПВЗ. Мы не берём деньги за хранение, приёмку и «размещение».</p>
+    <div class="page-hero-actions">
+      <a class="btn btn-ink" href="#sellerForm">Создать карточку</a>
+      <a class="btn btn-ghost" href="#economy">Сравнить с WB и Ozon</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="seller-layout">
+      <form class="seller-form" id="sellerForm">
+        <p class="builder-label">Новая карточка</p>
+        <div class="seller-row">
+          <label class="field"><span>Название вещи</span>
+            <input type="text" id="spName" placeholder="Пальто из шерсти" required>
+          </label>
+          <label class="field"><span>Бренд / имя магазина</span>
+            <input type="text" id="spBrand" placeholder="Лён и лотос">
+          </label>
+        </div>
+        <div class="seller-row">
+          <label class="field"><span>Категория</span>
+            <select id="spSlot">
+              <option value="outer">Верхняя одежда</option>
+              <option value="top">Верх</option>
+              <option value="bottom">Низ</option>
+              <option value="dress">Платье</option>
+              <option value="shoes">Обувь</option>
+              <option value="hat">Головной убор</option>
+            </select>
+          </label>
+          <label class="field"><span>Город отправки</span>
+            <select id="spCity">
+              <option>Москва</option><option>Санкт-Петербург</option><option>Казань</option>
+              <option>Екатеринбург</option><option>Новосибирск</option><option>Краснодар</option>
+              <option>Владивосток</option>
+            </select>
+          </label>
+        </div>
+        <div class="seller-row">
+          <label class="field"><span>Цена, ₽</span>
+            <input type="number" id="spPrice" min="300" step="100" value="4900" required>
+          </label>
+          <label class="field"><span>Фото вещи</span>
+            <input type="file" id="spPhoto" accept="image/*">
+          </label>
+        </div>
+
+        <fieldset class="seller-services">
+          <legend>Службы доставки</legend>
+          <label><input type="checkbox" class="sp-service" value="cdek" checked> СДЭК</label>
+          <label><input type="checkbox" class="sp-service" value="pek"> ПЭК</label>
+          <label><input type="checkbox" class="sp-service" value="yandex" checked> Яндекс Доставка</label>
+          <label><input type="checkbox" class="sp-service" value="ozon"> Ozon Доставка</label>
+          <label><input type="checkbox" class="sp-service" value="post"> Почта России</label>
+        </fieldset>
+
+        <button class="btn btn-accent btn-block" type="submit">Опубликовать карточку</button>
+        <p class="tiny">Фото остаётся в браузере. Если файл не выбран, подставится похожая вещь из демо-каталога.</p>
+      </form>
+
+      <aside class="seller-side">
+        <div class="calc-card">
+          <p class="builder-label">Что останется вам</p>
+          <div class="calc" id="spCalc"></div>
+        </div>
+        <div class="seller-result" id="sellerResult" hidden></div>
+        <div class="calc-card">
+          <p class="builder-label">Ваши карточки</p>
+          <div id="sellerPreview"></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="economy">
+  <div class="wrap">
+    <header class="sec-head">
+      <p class="eyebrow">Экономика</p>
+      <h2>Почему дешевле — и где мы не будем врать</h2>
+    </header>
+
+    <div class="cmp-layout">
+      <div class="cmp-card">
+        <p class="builder-label">Сравнение издержек</p>
+        <table class="dtable cmp-table">
+          <thead><tr><th></th><th>Wildberries</th><th>Ozon</th><th>ОБРАЗ</th></tr></thead>
+          <tbody>
+            <tr><td>Комиссия</td><td>19–25%</td><td>15–22%</td><td class="hl">6%</td></tr>
+            <tr><td>Логистика</td><td>60–120 ₽ с продавца</td><td>50–150 ₽</td><td>платит покупатель</td></tr>
+            <tr><td>Склад и хранение</td><td>платно</td><td>платно</td><td class="hl">нет</td></tr>
+            <tr><td>Приёмка и персонал</td><td>на стороне селлера</td><td>на стороне селлера</td><td class="hl">нет</td></tr>
+            <tr><td>Пальто за 6 900 ₽</td><td>≈ 7 900–8 600 ₽</td><td>≈ 7 600–8 300 ₽</td><td class="hl">6 900 ₽ + доставка</td></tr>
+          </tbody>
+        </table>
+        <p class="tiny">Оценка по открытым тарифам на ноябрь 2026. Комиссии и логистика маркетплейсов зависят от категории, оборота и схемы работы.</p>
+      </div>
+
+      <div class="cmp-card">
+        <p class="builder-label">Подключить каталог WB или Ozon</p>
+        <ul class="verdict">
+          <li class="yes"><b>Да:</b> импорт своих карточек через API продавца. У вас уже есть ключ — витрина наполняется автоматически, цены и остатки подтягиваются.</li>
+          <li class="yes"><b>Да:</b> партнёрские ссылки «купить на WB» для вещей, которых у нас нет.</li>
+          <li class="no"><b>Нет:</b> оформить заказ WB или Ozon внутри нашего сайта нельзя. Публичного checkout API у них нет — только витрина и переход.</li>
+          <li class="no"><b>Нет:</b> «всегда дешевле WB» — не гарантия. Маркетплейс субсидирует логистику и добивает цену скидкой за оборот.</li>
+          <li class="warn"><b>Осторожно:</b> синхронизация остатков идёт с задержкой — можно продать вещь, которой уже нет.</li>
+        </ul>
+        <p class="cmp-pos"><b>Наша позиция:</b> импорт карточек — делать. Изображать, что мы заменяем WB — нет: покупатель всё равно уйдёт на маркетплейс за отзывами и ПВЗ. Честнее быть витриной, которая приводит в магазин селлера.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <header class="sec-head"><p class="eyebrow">Вопросы</p><h2>Что спрашивают селлеры</h2></header>
+    <div class="faq">
+      <details open>
+        <summary>Сколько реально стоит размещение?</summary>
+        <p>Ничего. Плата только с продажи — 6%. Нет «размещения», «хранения», «обработки возврата» отдельной строкой.</p>
+      </details>
+      <details>
+        <summary>Кто платит за доставку?</summary>
+        <p>Покупатель. Вы платите только за то, что относите посылку в ПВЗ — обычно это пешая доступность или 100–200 ₽ курьеру.</p>
+      </details>
+      <details>
+        <summary>Когда приходят деньги?</summary>
+        <p>Через 3 дня после получения заказа. Возврат — за счёт обратной доставки, вещь возвращается вам.</p>
+      </details>
+      <details>
+        <summary>Нужен ли ИП или самозанятость?</summary>
+        <p>Да, для выплат. В демо этого шага нет, в продукте — проверка статуса и автоматические чеки.</p>
+      </details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-inner">
+    <div>
+      <a class="logo" href="index.html"><span class="logo-mark">О</span><span class="logo-text">ОБРАЗ<em>гардероб · ИИ</em></span></a>
+      <p class="foot-note">Демо-прототип: карточки живут в вашей вкладке, никуда не отправляются. Не является публичной офертой.</p>
+    </div>
+    <nav class="foot-nav">
+      <a href="catalog.html">Каталог</a>
+      <a href="stylist.html">ИИ-стилист</a>
+      <a href="fitting.html">Примерка</a>
+      <a href="delivery.html">Доставка</a>
+      <a href="sellers.html">Селлерам</a>
+    </nav>
+    <p class="foot-copy">© 2026 ОБРАЗ</p>
+  </div>
+</footer>
+
+<script src="assets/js/items.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/outfits.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/seller.js"></script>
+</body>
+</html>

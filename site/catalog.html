@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Каталог одежды от селлеров — ОБРАЗ</title>
+<meta name="description" content="92 вещи от российских селлеров: цены, размеры, службы доставки. Соберите образ и оформите заказ.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>(function(){var m=new URLSearchParams(location.search).get('mode')||localStorage.getItem('obraz-mode')||'images';document.documentElement.dataset.mode=m==='icons'?'icons':'images';})();</script>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap head-inner">
+    <a class="logo" href="index.html"><span class="logo-mark">О</span><span class="logo-text">ОБРАЗ<em>гардероб · ИИ</em></span></a>
+    <nav class="nav">
+      <a href="catalog.html">Каталог</a>
+      <a href="stylist.html">ИИ-стилист</a>
+      <a href="fitting.html">Примерка</a>
+      <a href="delivery.html">Доставка</a>
+      <a href="sellers.html">Селлерам</a>
+    </nav>
+    <a class="mode-switch" id="modeSwitch" href="?mode=icons"><span class="mode-dot"></span><span class="mode-label">Иконки</span></a>
+    <a class="btn btn-ink btn-sm" href="sellers.html">Продавать</a>
+  </div>
+</header>
+
+<main>
+<section class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot"></span> Витрина · каталог селлеров</p>
+    <h1>Вещи, которые можно купить</h1>
+    <p class="lead">Карточки создают сами селлеры. Без складов и приёмки: вещь едет от селлера в ПВЗ, поэтому комиссия 6%, а не 19%.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="market-tools" style="margin-bottom:1rem">
+      <span class="market-count" id="marketCount"></span>
+      <select id="marketSort" class="select-sm" aria-label="Сортировка">
+        <option value="popular">По популярности</option>
+        <option value="cheap">Сначала дешёвые</option>
+        <option value="expensive">Сначала дорогие</option>
+      </select>
+      <select id="marketService" class="select-sm" aria-label="Служба доставки">
+        <option value="all">Любая доставка</option>
+        <option value="cdek">СДЭК</option>
+        <option value="pek">ПЭК</option>
+        <option value="yandex">Яндекс Доставка</option>
+        <option value="ozon">Ozon Доставка</option>
+        <option value="post">Почта России</option>
+      </select>
+    </div>
+
+    <div class="market-layout">
+      <div>
+        <div class="chips market-chips" id="marketFilters">
+          <button class="chip is-on" data-bucket="all" type="button">Все</button>
+          <button class="chip" data-bucket="low" type="button">до 3 000 ₽</button>
+          <button class="chip" data-bucket="mid" type="button">3 000–6 000 ₽</button>
+          <button class="chip" data-bucket="high" type="button">дороже 6 000 ₽</button>
+        </div>
+        <div class="market-grid" id="marketGrid"></div>
+        <div class="market-more" id="marketMore"></div>
+      </div>
+
+      <aside class="cart-card">
+        <p class="builder-label">Образ и доставка</p>
+        <div id="cartBox"></div>
+        <label class="field compact" style="margin-top:.8rem"><span>Город доставки</span>
+          <select id="deliveryCity"></select>
+        </label>
+      </aside>
+    </div>
+
+    <div class="checkout-result" id="checkoutResult" hidden></div>
+
+    <div class="related">
+      <a href="fitting.html">Примерить на модели →</a>
+      <a href="stylist.html">Пусть ИИ соберёт образ →</a>
+      <a href="delivery.html">Рассчитать доставку →</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-inner">
+    <div>
+      <a class="logo" href="index.html"><span class="logo-mark">О</span><span class="logo-text">ОБРАЗ<em>гардероб · ИИ</em></span></a>
+      <p class="foot-note">Демо-прототип. Фотографии вещей — из открытого датасета clothing-dataset-small (CC). Не является публичной офертой.</p>
+    </div>
+    <nav class="foot-nav">
+      <a href="catalog.html">Каталог</a>
+      <a href="stylist.html">ИИ-стилист</a>
+      <a href="fitting.html">Примерка</a>
+      <a href="delivery.html">Доставка</a>
+      <a href="sellers.html">Селлерам</a>
+    </nav>
+    <p class="foot-copy">© 2026 ОБРАЗ</p>
+  </div>
+</footer>
+
+<div class="modal" id="checkoutModal" hidden>
+  <div class="modal-back" data-close-checkout></div>
+  <div class="modal-card" role="dialog" aria-modal="true">
+    <button class="modal-x" type="button" data-close-checkout aria-label="Закрыть">×</button>
+    <p class="eyebrow">Оформление заказа</p>
+    <h3 id="checkoutTitle">—</h3>
+    <p class="modal-sub" id="checkoutMeta">—</p>
+    <form id="checkoutForm">
+      <label class="field"><span>Имя</span><input type="text" id="checkoutName" placeholder="Анна" required></label>
+      <label class="field"><span>Телефон</span><input type="text" id="checkoutPhone" placeholder="+7 999 000-00-00" required></label>
+      <div class="seller-row">
+        <label class="field"><span>Город</span>
+          <select id="checkoutCity">
+            <option>Москва</option><option>Санкт-Петербург</option><option>Казань</option>
+            <option>Екатеринбург</option><option>Новосибирск</option><option>Краснодар</option>
+            <option>Владивосток</option>
+          </select>
+        </label>
+        <label class="field"><span>Доставка</span><select id="checkoutService"></select></label>
+      </div>
+      <button class="btn btn-accent btn-block" type="submit">Оформить</button>
+      <p class="tiny">Демо: заказ никуда не уходит, деньги не списываются.</p>
+    </form>
+  </div>
+</div>
+
+<script src="assets/js/items.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/outfits.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/catalog.js"></script>
+</body>
+</html>

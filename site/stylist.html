@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ИИ-стилист: как из 100 500 вещей собирается комплект — ОБРАЗ</title>
+<meta name="description" content="Воронка отсева в реальных числах, три комплекта на сегодня и завтра, чат-стилист, который объясняет выбор.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>(function(){var m=new URLSearchParams(location.search).get('mode')||localStorage.getItem('obraz-mode')||'images';document.documentElement.dataset.mode=m==='icons'?'icons':'images';})();</script>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap head-inner">
+    <a class="logo" href="index.html"><span class="logo-mark">О</span><span class="logo-text">ОБРАЗ<em>гардероб · ИИ</em></span></a>
+    <nav class="nav">
+      <a href="catalog.html">Каталог</a>
+      <a href="stylist.html">ИИ-стилист</a>
+      <a href="fitting.html">Примерка</a>
+      <a href="delivery.html">Доставка</a>
+      <a href="sellers.html">Селлерам</a>
+    </nav>
+    <a class="mode-switch" id="modeSwitch" href="?mode=icons"><span class="mode-dot"></span><span class="mode-label">Иконки</span></a>
+    <a class="btn btn-ink btn-sm" href="catalog.html">В каталог</a>
+  </div>
+</header>
+
+<main>
+<section class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot"></span> ИИ-стилист</p>
+    <h1>Как из 100 500 вещей получается комплект</h1>
+    <p class="lead">Шесть фильтров по очереди, затем оценка по теплоте, свежести и сочетаемости цвета. Ниже — не картинка: числа считаются по всему каталогу.</p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <header class="sec-head split">
+      <div>
+        <p class="eyebrow">Воронка отсева</p>
+        <h2>От каталога к трём комплектам</h2>
+      </div>
+      <div class="pipe-controls">
+        <label class="field compact"><span>Повод</span>
+          <select id="pipeOcc">
+            <option value="office">Офис</option>
+            <option value="walk">Прогулка</option>
+            <option value="date">Вечер</option>
+            <option value="sport">Спорт</option>
+          </select>
+        </label>
+        <label class="field compact"><span>Температура: <b id="pipeTempOut">+6°</b></span>
+          <input type="range" id="pipeTemp" min="-15" max="32" value="6">
+        </label>
+        <label class="field compact"><span>Пол</span>
+          <select id="pipeGender">
+            <option value="w">Женский</option>
+            <option value="m">Мужской</option>
+          </select>
+        </label>
+      </div>
+    </header>
+
+    <div class="pipe-layout">
+      <div class="funnel" id="funnel"></div>
+      <aside class="pipe-side">
+        <p class="builder-label">Что выжило после фильтров</p>
+        <div class="pool" id="funnelPool"></div>
+        <button class="btn btn-accent btn-block" type="button" id="pipeBuild">Собрать комплект</button>
+        <div class="pipe-result" id="pipeResult" hidden></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <header class="sec-head split">
+      <div>
+        <p class="eyebrow">Что надеть</p>
+        <h2>Три варианта на сегодня и на завтра</h2>
+        <p class="sec-sub">Варианты не повторяют друг друга и не повторяют то, что вы носили на этой неделе.</p>
+      </div>
+      <div class="tabs" id="dayTabs">
+        <button class="tab is-on" data-day="today" type="button">Сегодня · +6°</button>
+        <button class="tab" data-day="tomorrow" type="button">Завтра · +9°</button>
+      </div>
+    </header>
+    <div class="variants" id="todayGrid"></div>
+    <div class="related"><a href="fitting.html">Примерить любой комплект →</a><a href="catalog.html">Посмотреть вещи с ценами →</a></div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap chat-grid">
+    <div class="chat-copy">
+      <p class="eyebrow">Чат</p>
+      <h2>«Что надеть завтра на встречу?»</h2>
+      <p class="lead-sm">Стилист знает погоду, повод, размер и историю носки. Он не советует «бежевое пальто» — он выбирает конкретную вещь из каталога и объясняет, почему именно её.</p>
+      <ul class="checks">
+        <li>Собирает комплект под погоду и повод</li>
+        <li>Объясняет каждый выбор</li>
+        <li>Показывает на модели</li>
+        <li>Помнит, что вы уже носили</li>
+      </ul>
+      <p class="note-small">В демо чат работает по правилам и на том же каталоге, без внешнего API.</p>
+    </div>
+    <div class="chat">
+      <div class="chat-head">
+        <span class="avatar">О</span>
+        <div><b>Стилист «ОБРАЗ»</b><small>онлайн · каталог 100 500</small></div>
+        <span class="badge-demo">демо</span>
+      </div>
+      <div class="chat-body" id="chatBody">
+        <div class="msg bot">Привет. Скажите повод и погоду — соберу комплект и покажу на модели. Или спросите: «что надеть завтра?», «собери на свидание», «почему эти вещи».</div>
+      </div>
+      <div class="chat-suggest" id="chatSuggest">
+        <button type="button">Что надеть завтра на встречу?</button>
+        <button type="button">Собери на свидание</button>
+        <button type="button">Почему эти вещи?</button>
+      </div>
+      <form class="chat-form" id="chatForm" autocomplete="off">
+        <input id="chatInput" placeholder="Напишите стилисту…" aria-label="Сообщение стилисту">
+        <button class="btn btn-ink btn-sm" type="submit">→</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-inner">
+    <div>
+      <a class="logo" href="index.html"><span class="logo-mark">О</span><span class="logo-text">ОБРАЗ<em>гардероб · ИИ</em></span></a>
+      <p class="foot-note">Демо-прототип. Фотографии вещей — из открытого датасета clothing-dataset-small (CC). Не является публичной офертой.</p>
+    </div>
+    <nav class="foot-nav">
+      <a href="catalog.html">Каталог</a>
+      <a href="stylist.html">ИИ-стилист</a>
+      <a href="fitting.html">Примерка</a>
+      <a href="delivery.html">Доставка</a>
+      <a href="sellers.html">Селлерам</a>
+    </nav>
+    <p class="foot-copy">© 2026 ОБРАЗ</p>
+  </div>
+</footer>
+
+<script src="assets/js/items.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/outfits.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/stylist.js"></script>
+</body>
+</html>
